@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="home-view" class="view active">
+        <header class="top-bar">
+            <button id="add-new-btn" class="btn primary-btn">Add New Product</button>
+            <h1 class="page-title">Products</h1>
+        </header>
+        <main>
+            <div id="product-grid" class="grid">
+                <!-- Product cards will be injected here -->
+            </div>
+            <div id="empty-state" class="empty-state hidden">
+                <p>No products yet. Click "Add New Product" to get started.</p>
+            </div>
+        </main>
+    </div>
+
+    <div id="form-view" class="view hidden">
+        <main class="form-container">
+            <h2 id="form-title">Add New Product</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-group">
+                    <label for="product-name">Product Name</label>
+                    <input type="text" id="product-name" required placeholder="e.g. Wireless Headphones">
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-price">Price</label>
+                    <input type="number" id="product-price" required step="0.01" placeholder="e.g. 99.99">
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-desc">Small Description</label>
+                    <textarea id="product-desc" required rows="3" placeholder="Brief description of the product..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="product-photo">Photo</label>
+                    <input type="file" id="product-photo" accept="image/*">
+                    <div id="photo-preview-container" class="hidden">
+                        <img id="photo-preview" src="" alt="Preview">
+                        <button type="button" id="remove-photo-btn" class="btn secondary-btn small">Remove</button>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="cancel-btn" class="btn secondary-btn">Cancel</button>
+                    <button type="submit" id="show-btn" class="btn primary-btn">Show</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <template id="product-card-template">
+        <div class="card">
+            <div class="card-image-container">
+                <img class="card-image" src="" alt="Product">
+            </div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
+                    <button class="btn icon-btn edit-btn" aria-label="Edit" title="Edit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </button>
+                </div>
+                <p class="card-price"></p>
+                <p class="card-desc"></p>
+            </div>
+            <div class="card-footer">
+                <button class="btn icon-btn delete-btn" aria-label="Delete" title="Delete">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
